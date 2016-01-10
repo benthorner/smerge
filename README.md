@@ -1,6 +1,6 @@
 # Smerge
 
-## Advanced merge for hashes and other Ruby object.
+## Advanced merge for hashes and other Ruby objects.
 
 Smerge is a rule-based framework that allows you to define how to merge any object with any other object. It supports deep-merge for hashes by default, as well as set-merge (concat.uniq) for arrays.
 

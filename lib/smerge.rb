@@ -1,16 +1,17 @@
 require 'smerge/config'
-require 'smerge/utility/patch'
+require 'smerge/engine'
 
 module Smerge
-  def self.setup
-    yield Smerge::Config
+  def self.setup; yield config end
+
+  def self.config
+    @config ||= Config.new
   end
 
-  refine Object do
-    def smerge(obj)
-      Utility::Patch.call(self, obj)
-    end
+  def self.engine
+    Engine.new(config.rules.reverse)
   end
 end
 
+require 'smerge/imports/local'
 require 'smerge/setup'

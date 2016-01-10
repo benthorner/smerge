@@ -1,4 +1,5 @@
-using Smerge
+require 'smerge'
+using Smerge::Local
 
 Smerge.setup do |c|
   c.rule Object, Object do |left, right|

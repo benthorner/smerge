@@ -1,11 +1,11 @@
-require 'smerge/config/rule'
+require 'smerge/models/rule'
 
 module Smerge
-  module Config
-    def self.rule(left, right, &block)
+  class Config
+    def rule(left, right, &block)
       rules << Rule.new(left, right, block)
     end
 
-    def self.rules; @rules ||= [] end
+    def rules; @rules ||= [] end
   end
 end

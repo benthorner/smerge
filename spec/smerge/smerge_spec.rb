@@ -1,5 +1,5 @@
 require 'spec_helper'
-using Smerge
+using Smerge::Local
 
 describe 'Smerging' do
   describe '#smerge' do

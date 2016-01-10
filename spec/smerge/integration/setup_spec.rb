@@ -1,7 +1,7 @@
 require 'spec_helper'
 using Smerge::Local
 
-describe 'Smerge' do
+describe 'Setup' do
   it 'favours the RHS by default' do
     o1, o2 = Object.new, Object.new
     expect(o1.smerge o2).to eq o2

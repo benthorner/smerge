@@ -1,4 +1,4 @@
-require 'smerge/models/rule'
+require 'smerge/rule'
 
 module Smerge
   class Config

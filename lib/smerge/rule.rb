@@ -1,5 +1,6 @@
 require 'smerge/matchers/class'
 require 'smerge/matchers/object'
+require 'smerge/matchers/regexp'
 
 module Smerge
   class Rule
@@ -20,8 +21,8 @@ module Smerge
         self.right.match(right)
     end
 
-    def execute(left, right)
-      block.call(left, right)
+    def call(left, right)
+      self.block.call(left, right)
     end
   end
 end

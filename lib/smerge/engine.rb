@@ -1,5 +1,7 @@
 module Smerge
   class Engine
+    using Matchers
+
     def initialize(rules)
       @rules = rules
     end
@@ -7,10 +9,10 @@ module Smerge
     def call(left, right)
       @rules.each do |rule|
         next unless rule.match(left, right)
-        return rule.execute(left, right)
+        return rule.call(left, right)
       end
 
-      nil
+      right
     end
   end
 end

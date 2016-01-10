@@ -2,10 +2,6 @@ require 'smerge'
 using Smerge::Local
 
 Smerge.setup do |c|
-  c.rule Object, Object do |left, right|
-    right
-  end
-
   c.rule Object, nil do |left, right|
     left
   end

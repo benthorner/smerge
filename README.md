@@ -23,26 +23,29 @@ Either require the gem and use locally...
 
 Smerge has some basic rules out-of-the-box.
 
-    3.smerge 4 # => 4
-    nil.smerge 'a string' # => 'a string'
+    # Favour the RHS by default
+    3.smerge 4   # => 4
 
-    [1,2].smerge [3,4] # => [1,2,3,4]
-    [1,2].smerge [2,3] # => [1,2,3]
+    # Favour LHS when RHS is nil
+    3.smerge nil   # => 3
 
-    { }.smerge(a: 1) # => { a: 1 }
-    { a: 1 }.smerge({ }) # => { a: 1 }
+    # Merge arrays by concat.uniq
+    [1,2].smerge [2,3]   # => [1,2,3]
 
-    { a: { b: 2 } }.smerge(a: { c: 1 })
-    # => { a: { b: 2, c: 1 } }
+    # Merge hashes recursively
+    { a: { b: 2 } }.smerge({ a: { c: 1 } })
+    => { a: { b: 2, c: 1 } }
 
 You can also define new rules easily.
 
-    { a: 1 }.smerge 'off' # => 'off'
+    { a: 1 }.smerge 'off'   # => 'off'
 
     Smerge.setup do |c|
-      c.rule(Hash, 'off') { Hash.new }
+      c.rule(Hash, 'off') do |l, r|
+        Hash.new
+      end
     end
 
-    { a: 1 }.smerge 'off' # => { }
+    { a: 1 }.smerge 'off'   # => { }
 
-Rules can match by class or object equality.
+Rules can match by class, equality, or regex.

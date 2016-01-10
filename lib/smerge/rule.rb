@@ -1,6 +1,7 @@
 require 'smerge/matchers/class'
 require 'smerge/matchers/object'
 require 'smerge/matchers/regexp'
+require 'smerge/matchers/string'
 
 module Smerge
   class Rule
